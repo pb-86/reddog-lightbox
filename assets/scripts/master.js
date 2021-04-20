@@ -10,26 +10,26 @@ if ( images.length !== 0 ) {
 	
 	images.forEach( function( item, index ) {
 		item.addEventListener( 'click', function() {
-			fullImage.setAttribute( 'src', this.getAttribute( 'srcset' ).split(',').pop().trim().split(' ')[0] );
+			fullImage.setAttribute( 'src', getFullImageSrc( this ) );
 			fullImage.setAttribute( 'data-index', index );
-			prevButton.setAttribute( 'data-index', prevImageIndex( index ) );
-			nextButton.setAttribute( 'data-index', nextImageIndex( index ) );
+			prevButton.setAttribute( 'data-index', getPrevImageIndex( index ) );
+			nextButton.setAttribute( 'data-index', getNextImageIndex( index ) );
 			openModal();
 		});
 	});
 	
 	prevButton.addEventListener( 'click', function() {
 		const prevIndex = this.getAttribute( 'data-index' );
-		fullImage.setAttribute( 'src', images[ prevIndex ].getAttribute( 'srcset' ).split(',').pop().trim().split(' ')[0] );
-		prevButton.setAttribute( 'data-index', prevImageIndex( prevIndex ) );
-		nextButton.setAttribute( 'data-index', nextImageIndex( prevIndex ) );
+		fullImage.setAttribute( 'src', getFullImageSrc( images[ prevIndex ] ) );
+		prevButton.setAttribute( 'data-index', getPrevImageIndex( prevIndex ) );
+		nextButton.setAttribute( 'data-index', getNextImageIndex( prevIndex ) );
 	});
 	
 	nextButton.addEventListener( 'click', function() {
 		const nextIndex = this.getAttribute( 'data-index' );
-		fullImage.setAttribute( 'src', images[ nextIndex ].getAttribute( 'srcset' ).split(',').pop().trim().split(' ')[0] );
-		prevButton.setAttribute( 'data-index', prevImageIndex( nextIndex ) );
-		nextButton.setAttribute( 'data-index', nextImageIndex( nextIndex ) );
+		fullImage.setAttribute( 'src', getFullImageSrc( images[ nextIndex ] ) );
+		prevButton.setAttribute( 'data-index', getPrevImageIndex( nextIndex ) );
+		nextButton.setAttribute( 'data-index', getNextImageIndex( nextIndex ) );
 	});
 
 	modal.addEventListener( 'click', function(e) {
@@ -38,7 +38,15 @@ if ( images.length !== 0 ) {
 		}
 	});
 
-	function prevImageIndex( index ) {
+	function getFullImageSrc( image ) {
+		if ( image.getAttribute( 'data-full-url' ) ) {
+			return image.getAttribute( 'data-full-url' );
+		} else {
+			return image.getAttribute( 'srcset' ).split(',').pop().trim().split(' ')[0];
+		}
+	}
+
+	function getPrevImageIndex( index ) {
 		if ( index - 1 < 0 ) {
 			index = images.length - 1;
 		} else {
@@ -47,7 +55,7 @@ if ( images.length !== 0 ) {
 		return index;
 	}
 	
-	function nextImageIndex( index ) {
+	function getNextImageIndex( index ) {
 		if ( index >= images.length - 1 ) {
 			index = 0;
 		} else {

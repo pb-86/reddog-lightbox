@@ -45,7 +45,7 @@
 }
 
 .rddglb-modal__full-image {
-	border: 0.25rem solid #fff;
+	border: 0.5rem solid #fff;
 	max-height: 85vh;
 	max-width: 85vw;
 }
