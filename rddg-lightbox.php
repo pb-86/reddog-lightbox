@@ -3,7 +3,7 @@
  * Plugin Name: RDDG Lightbox
  * Plugin URI: https://github.com/pb-86/rddg-Lightbox
  * Description: Simple and lightweight plugin that provide lightbox gallery.
- * Version: 0.1
+ * Version: 0.1.1
  * Author: Przemek Bąchorek
  * Author URI: https://reddog.systems
  * License: GPLv2 or later
@@ -33,3 +33,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+/**
+ * Registering main JS file.
+ */
+function rddglb_add_scripts() {
+	wp_register_script( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/scripts/master.js', array(), '0.1', true );
+	wp_enqueue_script( 'rddglb-master' );
+}
+add_action( 'wp_enqueue_scripts', 'rddglb_add_scripts' );
