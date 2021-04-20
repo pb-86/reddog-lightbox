@@ -3,7 +3,7 @@
  * Plugin Name: RDDG Lightbox
  * Plugin URI: https://github.com/pb-86/rddg-Lightbox
  * Description: Simple and lightweight plugin that provide lightbox gallery.
- * Version: 0.1.1
+ * Version: 0.1.2
  * Author: Przemek Bąchorek
  * Author URI: https://reddog.systems
  * License: GPLv2 or later
@@ -35,10 +35,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Registering main JS file.
+ * Registering and enqueing JS files
  */
 function rddglb_add_scripts() {
-	wp_register_script( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/scripts/master.js', array(), '0.1', true );
+	wp_register_script( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/scripts/master.js', array(), '0.1.2', true );
 	wp_enqueue_script( 'rddglb-master' );
 }
 add_action( 'wp_enqueue_scripts', 'rddglb_add_scripts' );
+
+/**
+ * Registering and enqueing CSS files
+ */
+function rddglb_add_styles() {
+	wp_register_style( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/styles/css/master.css', array(), '0.1.2', 'all' );
+	wp_enqueue_style( 'rddglb-master' );
+}
+add_action( 'wp_enqueue_scripts', 'rddglb_add_styles' );
+
+/**
+ * Adds HTML code of modal to the end of the_content
+ *
+ * @param string $content Content of the_content.
+ * @return string Modified the_content.
+ */
+function rddglb_add_modal( $content ) {
+	$modal_html = rddglb_get_modal_html();
+	return $content . $modal_html;
+}
+add_filter( 'the_content', 'rddglb_add_modal', 50 );
+
+/**
+ * HTML od the modal
+ *
+ * @return string $html HTML code of the modal.
+ */
+function rddglb_get_modal_html() {
+	$html = '<div class="rddglb-modal rddglb-modal--hidden" aria-hidden="true"></div>';
+	return $html;
+}
