@@ -1,2 +1,55 @@
 .rddglb-modal {
+	display: none;
+}
+
+.rddglb-modal--show {
+	align-items: center;
+	background-color: rgba(0,0,0,0.9);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 99998;
+}
+
+.rddglb-modal__buttons {
+	position: absolute;
+	width: 100%;
+	z-index: 99999;
+}
+
+.rddglb-modal__button {
+	background: none;
+	border: 0;
+	height: 3rem;
+	line-height: 0;
+	position: absolute;
+	width: 3rem;
+	top: calc(50% - 1.5rem);
+}
+
+.rddglb-modal__button:hover {
+	background-color: #444;
+}
+
+.rddglb-modal__button--prev {
+	left: 2rem;
+}
+
+.rddglb-modal__button--next {
+	right: 2rem;
+}
+
+.rddglb-modal__full-image {
+	border: 0.25rem solid #fff;
+	max-height: 85vh;
+	max-width: 85vw;
+}
+
+.rddglb-overflow {
+	overflow: hidden;
 }

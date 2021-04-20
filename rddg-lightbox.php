@@ -3,7 +3,7 @@
  * Plugin Name: RDDG Lightbox
  * Plugin URI: https://github.com/pb-86/rddg-Lightbox
  * Description: Simple and lightweight plugin that provide lightbox gallery.
- * Version: 0.1.2
+ * Version: 0.2
  * Author: Przemek Bąchorek
  * Author URI: https://reddog.systems
  * License: GPLv2 or later
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registering and enqueing JS files
  */
 function rddglb_add_scripts() {
-	wp_register_script( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/scripts/master.js', array(), '0.1.2', true );
+	wp_register_script( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/scripts/master.js', array(), '0.2', true );
 	wp_enqueue_script( 'rddglb-master' );
 }
 add_action( 'wp_enqueue_scripts', 'rddglb_add_scripts' );
@@ -47,7 +47,7 @@ add_action( 'wp_enqueue_scripts', 'rddglb_add_scripts' );
  * Registering and enqueing CSS files
  */
 function rddglb_add_styles() {
-	wp_register_style( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/styles/css/master.css', array(), '0.1.2', 'all' );
+	wp_register_style( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/styles/css/master.css', array(), '0.2', 'all' );
 	wp_enqueue_style( 'rddglb-master' );
 }
 add_action( 'wp_enqueue_scripts', 'rddglb_add_styles' );
@@ -70,6 +70,12 @@ add_filter( 'the_content', 'rddglb_add_modal', 50 );
  * @return string $html HTML code of the modal.
  */
 function rddglb_get_modal_html() {
-	$html = '<div class="rddglb-modal rddglb-modal--hidden" aria-hidden="true"></div>';
+	$html  = '<div class="rddglb-modal" id="rddglb-modal" aria-hidden="true">';
+	$html .= '<div class="rddglb-modal__buttons">';
+	$html .= '<button class="rddglb-modal__button rddglb-modal__button--prev" id="rddglb-prevButton"><img src="' . plugins_url() . '/rddg-Lightbox/assets/images/icon-prev.svg" height="32" width="20"></button>';
+	$html .= '<button class="rddglb-modal__button rddglb-modal__button--next" id="rddglb-nextButton"><img src="' . plugins_url() . '/rddg-Lightbox/assets/images/icon-next.svg" height="32" width="20"></button>';
+	$html .= '</div>';
+	$html .= '<img class="rddglb-modal__full-image" id="rddglb-fullImage" src="">';
+	$html .= '</div>';
 	return $html;
 }
