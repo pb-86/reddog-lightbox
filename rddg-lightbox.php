@@ -3,7 +3,7 @@
  * Plugin Name: RDDG Lightbox
  * Plugin URI: https://github.com/pb-86/rddg-Lightbox
  * Description: Simple and lightweight plugin that provide lightbox gallery.
- * Version: 0.2.1
+ * Version: 0.2.2
  * Author: Przemek Bąchorek
  * Author URI: https://reddog.systems
  * License: GPLv2 or later
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registering and enqueing JS files
  */
 function rddglb_add_scripts() {
-	wp_register_script( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/scripts/master.js', array(), '0.2.1', true );
+	wp_register_script( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/scripts/master.js', array(), '0.2.2', true );
 	wp_enqueue_script( 'rddglb-master' );
 }
 add_action( 'wp_enqueue_scripts', 'rddglb_add_scripts' );
@@ -47,7 +47,7 @@ add_action( 'wp_enqueue_scripts', 'rddglb_add_scripts' );
  * Registering and enqueing CSS files
  */
 function rddglb_add_styles() {
-	wp_register_style( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/styles/css/master.css', array(), '0.2.1', 'all' );
+	wp_register_style( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/styles/css/master.css', array(), '0.2.2', 'all' );
 	wp_enqueue_style( 'rddglb-master' );
 }
 add_action( 'wp_enqueue_scripts', 'rddglb_add_styles' );

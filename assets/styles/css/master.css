@@ -53,3 +53,7 @@
 .rddglb-overflow {
 	overflow: hidden;
 }
+
+img[class^='wp-image-'] {
+	cursor: pointer;
+}
