@@ -3,8 +3,8 @@
  * Plugin Name: RDDG Lightbox
  * Plugin URI: https://github.com/pb-86/rddg-Lightbox
  * Description: Simple and lightweight plugin that provide lightbox gallery.
- * Version: 0.2.3
- * Author: Przemek Bąchorek
+ * Version: 0.2.4
+ * Author: Reddog Systems
  * Author URI: https://reddog.systems
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -34,11 +34,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+define( 'PLUGIN_VERSION', '0.2.4' );
+define( 'PLUGIN_PATH', plugins_url() . '/rddg-Lightbox/' );
+
 /**
  * Registering and enqueing JS files
  */
 function rddglb_add_scripts() {
-	wp_register_script( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/scripts/master.js', array(), '0.2.3', true );
+	wp_register_script( 'rddglb-master', PLUGIN_PATH . 'assets/scripts/master.js', array(), PLUGIN_VERSION, true );
 	wp_enqueue_script( 'rddglb-master' );
 }
 add_action( 'wp_enqueue_scripts', 'rddglb_add_scripts' );
@@ -47,13 +50,13 @@ add_action( 'wp_enqueue_scripts', 'rddglb_add_scripts' );
  * Registering and enqueing CSS files
  */
 function rddglb_add_styles() {
-	wp_register_style( 'rddglb-master', plugins_url() . '/rddg-Lightbox/assets/styles/css/master.css', array(), '0.2.3', 'all' );
+	wp_register_style( 'rddglb-master', PLUGIN_PATH . 'assets/styles/css/master.css', array(), PLUGIN_VERSION, 'all' );
 	wp_enqueue_style( 'rddglb-master' );
 }
 add_action( 'wp_enqueue_scripts', 'rddglb_add_styles' );
 
 /**
- * Adds HTML code of modal to the end of the_content
+ * Adds HTML code of the modal to the end of the_content
  *
  * @param string $content Content of the_content.
  * @return string Modified the_content.
@@ -65,7 +68,7 @@ function rddglb_add_modal( $content ) {
 add_filter( 'the_content', 'rddglb_add_modal', 50 );
 
 /**
- * HTML od the modal
+ * HTML of the modal
  *
  * @return string $html HTML code of the modal.
  */
