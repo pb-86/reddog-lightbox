@@ -72,6 +72,7 @@ if ( images.length !== 0 ) {
 	function closeModal() {
 		modal.classList.remove( 'rddglb-modal--show' );
 		document.body.classList.remove( 'rddglb-overflow' );
+		fullImage.removeAttribute( 'src' );
 	}
 	
 	console.info( 'RDDGLB: Ready to go!' );
