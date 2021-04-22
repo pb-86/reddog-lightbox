@@ -3,7 +3,7 @@
  * Plugin Name: RDDG Lightbox
  * Plugin URI: https://github.com/pb-86/rddg-Lightbox
  * Description: Simple and lightweight plugin that provide lightbox gallery.
- * Version: 0.2.9
+ * Version: 0.2.10
  * Author: Reddog Systems
  * Author URI: https://reddog.systems
  * License: GPLv2 or later
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PLUGIN_VERSION', '0.2.9' );
+define( 'PLUGIN_VERSION', '0.2.10' );
 define( 'PLUGIN_PATH', plugins_url() . '/rddg-Lightbox/' );
 define( 'IMAGES_PATH', PLUGIN_PATH . 'assets/images/' );
 define( 'SCRIPTS_PATH', PLUGIN_PATH . 'assets/scripts/' );
@@ -83,6 +83,11 @@ function rddglb_get_modal_html() {
 	$html .= '<button class="rddglb-modal__button rddglb-modal__button--next" id="rddglb-nextButton"><img src="' . IMAGES_PATH . 'icon-next.svg" height="26" width="16"></button>';
 	$html .= '</div>';
 	$html .= '<img class="rddglb-modal__full-image" id="rddglb-fullImage" src="">';
+	$html .= '<div class="rddglb-modal__counter" id="rddglb-counter">';
+	$html .= '<span class="rddglb-modal__counter-current" id="rddglb-counterCurrent"></span>';
+	$html .= '<span class="rddglb-modal__counter-separator">/</span>';
+	$html .= '<span class="rddglb-modal__counter-all" id="rddglb-counterAll"></span>';
+	$html .= '</div>';
 	$html .= '</div>';
 	return $html;
 }

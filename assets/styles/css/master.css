@@ -37,7 +37,7 @@
 }
 
 .rddglb-modal__button:hover {
-	background-color: #444;
+	background-color: #333;
 }
 
 .rddglb-modal__button--close {
@@ -61,6 +61,25 @@
 	border: 0.5rem solid #fff;
 	max-height: 85vh;
 	max-width: 85vw;
+}
+
+.rddglb-modal__counter {
+	bottom: 2rem;
+	color: #fff;
+	font-size: 0.875rem;
+	font-family: sans-serif;
+	font-weight: 700;
+	line-height: 1;
+	position: absolute;
+}
+
+.rddglb-modal__counter--hide {
+	display: none;
+}
+
+.rddglb-modal__counter-separator {
+	color: #666;
+	padding: 0 0.25rem;
 }
 
 .rddglb-overflow {
