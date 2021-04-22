@@ -8,8 +8,6 @@ if ( images.length !== 0 ) {
 	const nextButton  = document.getElementById( 'rddglb-nextButton' );
 	const closeButton = document.getElementById( 'rddglb-closeButton' );
 	const modal       = document.getElementById( 'rddglb-modal' );
-
-	console.log( closeButton );
 	
 	images.forEach( function( item, index ) {
 		item.addEventListener( 'click', function() {
