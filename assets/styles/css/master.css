@@ -19,6 +19,7 @@
 .rddglb-modal__buttons {
 	position: absolute;
 	width: 100%;
+	top: calc(50% - 1.5rem);
 	z-index: 99999;
 }
 
@@ -33,11 +34,19 @@
 	line-height: 0;
 	position: absolute;
 	width: 3rem;
-	top: calc(50% - 1.5rem);
 }
 
 .rddglb-modal__button:hover {
 	background-color: #444;
+}
+
+.rddglb-modal__button--close {
+	top: 1rem;
+	right: 1rem;
+}
+
+.admin-bar .rddglb-modal__button--close {
+	top: calc(1rem + 32px);
 }
 
 .rddglb-modal__button--prev {

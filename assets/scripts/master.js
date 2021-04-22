@@ -3,16 +3,19 @@ console.info( 'RDDGLB: Searching for galleries…' );
 const images = document.querySelectorAll( "[class*=wp-image]" );
 
 if ( images.length !== 0 ) {
-	const fullImage  = document.getElementById( 'rddglb-fullImage' );
-	const prevButton = document.getElementById( 'rddglb-prevButton' );
-	const nextButton = document.getElementById( 'rddglb-nextButton' );
-	const modal      = document.getElementById( 'rddglb-modal' );
+	const fullImage   = document.getElementById( 'rddglb-fullImage' );
+	const prevButton  = document.getElementById( 'rddglb-prevButton' );
+	const nextButton  = document.getElementById( 'rddglb-nextButton' );
+	const closeButton = document.getElementById( 'rddglb-closeButton' );
+	const modal       = document.getElementById( 'rddglb-modal' );
+
+	console.log( closeButton );
 	
 	images.forEach( function( item, index ) {
 		item.addEventListener( 'click', function() {
 			fullImage.setAttribute( 'src', getFullImageSrc( this ) );
 			fullImage.setAttribute( 'data-index', index );
-			setPrevNextButtons( images, index );
+			setButtons( images, index );
 			openModal();
 		});
 	});
@@ -31,7 +34,7 @@ if ( images.length !== 0 ) {
 		}
 	}
 
-	function setPrevNextButtons( images, index ) {
+	function setButtons( images, index ) {
 		if ( images.length > 1 ) {
 			prevButton.setAttribute( 'data-index', getPrevImageIndex( index ) );
 			nextButton.setAttribute( 'data-index', getNextImageIndex( index ) );
@@ -53,6 +56,7 @@ if ( images.length !== 0 ) {
 			prevButton.classList.add( 'rddglb-modal__buttons--hide' );
 			nextButton.classList.add( 'rddglb-modal__buttons--hide' );
 		}
+		closeButton.addEventListener( 'click', closeModal );
 	}
 
 	function getPrevImageIndex( index ) {
