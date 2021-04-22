@@ -12,24 +12,9 @@ if ( images.length !== 0 ) {
 		item.addEventListener( 'click', function() {
 			fullImage.setAttribute( 'src', getFullImageSrc( this ) );
 			fullImage.setAttribute( 'data-index', index );
-			prevButton.setAttribute( 'data-index', getPrevImageIndex( index ) );
-			nextButton.setAttribute( 'data-index', getNextImageIndex( index ) );
+			setPrevNextButtons( images, index );
 			openModal();
 		});
-	});
-	
-	prevButton.addEventListener( 'click', function() {
-		const prevIndex = this.getAttribute( 'data-index' );
-		fullImage.setAttribute( 'src', getFullImageSrc( images[ prevIndex ] ) );
-		prevButton.setAttribute( 'data-index', getPrevImageIndex( prevIndex ) );
-		nextButton.setAttribute( 'data-index', getNextImageIndex( prevIndex ) );
-	});
-	
-	nextButton.addEventListener( 'click', function() {
-		const nextIndex = this.getAttribute( 'data-index' );
-		fullImage.setAttribute( 'src', getFullImageSrc( images[ nextIndex ] ) );
-		prevButton.setAttribute( 'data-index', getPrevImageIndex( nextIndex ) );
-		nextButton.setAttribute( 'data-index', getNextImageIndex( nextIndex ) );
 	});
 
 	modal.addEventListener( 'click', function(e) {
@@ -43,6 +28,30 @@ if ( images.length !== 0 ) {
 			return image.getAttribute( 'data-full-url' );
 		} else {
 			return image.getAttribute( 'srcset' ).split(',').pop().trim().split(' ')[0];
+		}
+	}
+
+	function setPrevNextButtons( images, index ) {
+		if ( images.length > 1 ) {
+			prevButton.setAttribute( 'data-index', getPrevImageIndex( index ) );
+			nextButton.setAttribute( 'data-index', getNextImageIndex( index ) );
+
+			prevButton.addEventListener( 'click', function() {
+				const prevIndex = this.getAttribute( 'data-index' );
+				fullImage.setAttribute( 'src', getFullImageSrc( images[ prevIndex ] ) );
+				prevButton.setAttribute( 'data-index', getPrevImageIndex( prevIndex ) );
+				nextButton.setAttribute( 'data-index', getNextImageIndex( prevIndex ) );
+			});
+			
+			nextButton.addEventListener( 'click', function() {
+				const nextIndex = this.getAttribute( 'data-index' );
+				fullImage.setAttribute( 'src', getFullImageSrc( images[ nextIndex ] ) );
+				prevButton.setAttribute( 'data-index', getPrevImageIndex( nextIndex ) );
+				nextButton.setAttribute( 'data-index', getNextImageIndex( nextIndex ) );
+			});
+		} else {
+			prevButton.classList.add( 'rddglb-modal__buttons--hide' );
+			nextButton.classList.add( 'rddglb-modal__buttons--hide' );
 		}
 	}
 
