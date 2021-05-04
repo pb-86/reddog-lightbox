@@ -55,10 +55,12 @@ if ( images.length !== 0 ) {
 	closeButton.addEventListener( 'click', closeModal );
 
 	function getFullImageSrc( image ) {
-		if ( image.getAttribute( 'data-full-url' ) ) {
+		if ( image.hasAttribute( 'data-full-url' ) ) {
 			return image.getAttribute( 'data-full-url' );
-		} else {
+		} else if ( image.hasAttribute( 'srcset' ) ) {
 			return image.getAttribute( 'srcset' ).split(',').pop().trim().split(' ')[0];
+		} else {
+			return image.getAttribute( 'src' );
 		}
 	}
 
