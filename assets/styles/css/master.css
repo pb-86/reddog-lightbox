@@ -57,10 +57,18 @@
 	right: 1rem;
 }
 
+.rddglb-modal__loading--hide {
+	display: none;
+}
+
 .rddglb-modal__full-image {
 	border: 0.5rem solid #fff;
 	max-height: 85vh;
 	max-width: 85vw;
+}
+
+.rddglb-modal__full-image--hide {
+	display: none;
 }
 
 .rddglb-modal__counter {

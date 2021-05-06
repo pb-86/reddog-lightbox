@@ -3,7 +3,7 @@
  * Plugin Name: RDDG Lightbox
  * Plugin URI: https://github.com/pb-86/rddg-Lightbox
  * Description: Simple and lightweight plugin that provide lightbox gallery.
- * Version: 0.2.12
+ * Version: 0.2.13
  * Author: Reddog Systems
  * Author URI: https://reddog.systems
  * License: GPLv2 or later
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PLUGIN_VERSION', '0.2.12' );
+define( 'PLUGIN_VERSION', '0.2.13' );
 define( 'PLUGIN_PATH', plugins_url() . '/rddg-Lightbox/' );
 define( 'IMAGES_PATH', PLUGIN_PATH . 'assets/images/' );
 define( 'SCRIPTS_PATH', PLUGIN_PATH . 'assets/scripts/' );
@@ -82,6 +82,7 @@ function rddglb_get_modal_html() {
 	$html .= '<button class="rddglb-modal__button rddglb-modal__button--prev" id="rddglb-prevButton"><img src="' . IMAGES_PATH . 'icon-prev.svg" height="26" width="16"></button>';
 	$html .= '<button class="rddglb-modal__button rddglb-modal__button--next" id="rddglb-nextButton"><img src="' . IMAGES_PATH . 'icon-next.svg" height="26" width="16"></button>';
 	$html .= '</div>';
+	$html .= '<img class="rddglb-modal__loading rddglb-modal__loading--hide" id="rddglb-loading" src="' . IMAGES_PATH . 'icon-loading.svg" height="24" width="24">';
 	$html .= '<img class="rddglb-modal__full-image" id="rddglb-fullImage" src="">';
 	$html .= '<div class="rddglb-modal__counter" id="rddglb-counter">';
 	$html .= '<span class="rddglb-modal__counter-current" id="rddglb-counterCurrent"></span>';

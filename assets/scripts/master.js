@@ -3,6 +3,7 @@ console.info( 'RDDGLB: Searching for galleries…' );
 const images = document.querySelectorAll( "[class*=wp-image]" );
 
 if ( images.length !== 0 ) {
+	const loading        = document.getElementById( 'rddglb-loading' );
 	const fullImage      = document.getElementById( 'rddglb-fullImage' );
 	const prevButton     = document.getElementById( 'rddglb-prevButton' );
 	const nextButton     = document.getElementById( 'rddglb-nextButton' );
@@ -31,6 +32,7 @@ if ( images.length !== 0 ) {
 
 	prevButton.addEventListener( 'click', function() {
 		const prevIndex = this.getAttribute( 'data-index' );
+		fullImage.removeAttribute( 'src' );
 		fullImage.setAttribute( 'src', getFullImageSrc( images[ prevIndex ] ) );
 		prevButton.setAttribute( 'data-index', getPrevImageIndex( prevIndex ) );
 		nextButton.setAttribute( 'data-index', getNextImageIndex( prevIndex ) );
@@ -39,7 +41,7 @@ if ( images.length !== 0 ) {
 	
 	nextButton.addEventListener( 'click', function() {
 		const nextIndex = this.getAttribute( 'data-index' );
-		console.log (nextIndex);
+		fullImage.removeAttribute( 'src' );
 		fullImage.setAttribute( 'src', getFullImageSrc( images[ nextIndex ] ) );
 		prevButton.setAttribute( 'data-index', getPrevImageIndex( nextIndex ) );
 		nextButton.setAttribute( 'data-index', getNextImageIndex( nextIndex ) );
