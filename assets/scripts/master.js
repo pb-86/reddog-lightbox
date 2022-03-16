@@ -48,6 +48,8 @@ if ( images.length !== 0 ) {
 		setCounter( images.length, parseInt( nextIndex ) );
 	});
 
+	document.onkeydown = keyboard;
+
 	modal.addEventListener( 'click', function( e ) {
 		if ( e.target === e.currentTarget ) {
 			closeModal();
@@ -84,6 +86,27 @@ if ( images.length !== 0 ) {
 			index++;
 		}
 		return index;
+	}
+
+	function keyboard( e ) {
+		if ( modal.classList.contains( 'rddglb-modal--show' ) ) {
+			if ( e.key === 'ArrowLeft' ) {
+				const prevIndex = prevButton.getAttribute( 'data-index' );
+				fullImage.removeAttribute( 'src' );
+				fullImage.setAttribute( 'src', getFullImageSrc( images[ prevIndex ] ) );
+				prevButton.setAttribute( 'data-index', getPrevImageIndex( prevIndex ) );
+				nextButton.setAttribute( 'data-index', getNextImageIndex( prevIndex ) );
+				setCounter( images.length, parseInt( prevIndex ) );
+			}
+			if ( e.key === 'ArrowRight' ) {
+				const nextIndex = nextButton.getAttribute( 'data-index' );
+				fullImage.removeAttribute( 'src' );
+				fullImage.setAttribute( 'src', getFullImageSrc( images[ nextIndex ] ) );
+				prevButton.setAttribute( 'data-index', getPrevImageIndex( nextIndex ) );
+				nextButton.setAttribute( 'data-index', getNextImageIndex( nextIndex ) );
+				setCounter( images.length, parseInt( nextIndex ) );
+			}
+		}
 	}
 
 	function setCounter( all, current ) {
