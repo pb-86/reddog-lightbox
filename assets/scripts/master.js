@@ -30,25 +30,9 @@ if ( images.length !== 0 ) {
 		});
 	});
 
-	prevButton.addEventListener( 'click', function() {
-		const prevIndex = this.getAttribute( 'data-index' );
-		fullImage.removeAttribute( 'src' );
-		fullImage.setAttribute( 'src', getFullImageSrc( images[ prevIndex ] ) );
-		prevButton.setAttribute( 'data-index', getPrevImageIndex( prevIndex ) );
-		nextButton.setAttribute( 'data-index', getNextImageIndex( prevIndex ) );
-		setCounter( images.length, parseInt( prevIndex ) );
-	});
-	
-	nextButton.addEventListener( 'click', function() {
-		const nextIndex = this.getAttribute( 'data-index' );
-		fullImage.removeAttribute( 'src' );
-		fullImage.setAttribute( 'src', getFullImageSrc( images[ nextIndex ] ) );
-		prevButton.setAttribute( 'data-index', getPrevImageIndex( nextIndex ) );
-		nextButton.setAttribute( 'data-index', getNextImageIndex( nextIndex ) );
-		setCounter( images.length, parseInt( nextIndex ) );
-	});
-
-	document.onkeydown = keyboard;
+	prevButton.addEventListener( 'click', showPrevImage);	
+	nextButton.addEventListener( 'click', showNextImage);
+	document.onkeydown = keyboardSupport;
 
 	modal.addEventListener( 'click', function( e ) {
 		if ( e.target === e.currentTarget ) {
@@ -88,23 +72,31 @@ if ( images.length !== 0 ) {
 		return index;
 	}
 
-	function keyboard( e ) {
+	function showPrevImage() {
+		const prevIndex = prevButton.getAttribute( 'data-index' );
+		fullImage.removeAttribute( 'src' );
+		fullImage.setAttribute( 'src', getFullImageSrc( images[ prevIndex ] ) );
+		prevButton.setAttribute( 'data-index', getPrevImageIndex( prevIndex ) );
+		nextButton.setAttribute( 'data-index', getNextImageIndex( prevIndex ) );
+		setCounter( images.length, parseInt( prevIndex ) );
+	}
+
+	function showNextImage() {
+		const nextIndex = nextButton.getAttribute( 'data-index' );
+		fullImage.removeAttribute( 'src' );
+		fullImage.setAttribute( 'src', getFullImageSrc( images[ nextIndex ] ) );
+		prevButton.setAttribute( 'data-index', getPrevImageIndex( nextIndex ) );
+		nextButton.setAttribute( 'data-index', getNextImageIndex( nextIndex ) );
+		setCounter( images.length, parseInt( nextIndex ) );
+	}
+
+	function keyboardSupport( e ) {
 		if ( modal.classList.contains( 'rddglb-modal--show' ) ) {
 			if ( e.key === 'ArrowLeft' ) {
-				const prevIndex = prevButton.getAttribute( 'data-index' );
-				fullImage.removeAttribute( 'src' );
-				fullImage.setAttribute( 'src', getFullImageSrc( images[ prevIndex ] ) );
-				prevButton.setAttribute( 'data-index', getPrevImageIndex( prevIndex ) );
-				nextButton.setAttribute( 'data-index', getNextImageIndex( prevIndex ) );
-				setCounter( images.length, parseInt( prevIndex ) );
+				showPrevImage();
 			}
 			if ( e.key === 'ArrowRight' ) {
-				const nextIndex = nextButton.getAttribute( 'data-index' );
-				fullImage.removeAttribute( 'src' );
-				fullImage.setAttribute( 'src', getFullImageSrc( images[ nextIndex ] ) );
-				prevButton.setAttribute( 'data-index', getPrevImageIndex( nextIndex ) );
-				nextButton.setAttribute( 'data-index', getNextImageIndex( nextIndex ) );
-				setCounter( images.length, parseInt( nextIndex ) );
+				showNextImage();
 			}
 		}
 	}

@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PLUGIN_VERSION', '0.3' );
+define( 'PLUGIN_VERSION', '0.3.1' );
 define( 'PLUGIN_PATH', plugins_url() . '/rddg-Lightbox/' );
 define( 'IMAGES_PATH', PLUGIN_PATH . 'assets/images/' );
 define( 'SCRIPTS_PATH', PLUGIN_PATH . 'assets/scripts/' );
