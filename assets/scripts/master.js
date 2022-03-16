@@ -62,7 +62,9 @@ if ( images.length !== 0 ) {
 		} else if ( image.hasAttribute( 'srcset' ) ) {
 			return image.getAttribute( 'srcset' ).split(',').pop().trim().split(' ')[0];
 		} else {
-			return image.getAttribute( 'src' );
+			const imageExtension = image.getAttribute( 'src' ).substring( image.getAttribute( 'src' ).lastIndexOf( '.' ) );
+			const imageName      = image.getAttribute( 'src' ).substring( 0, image.getAttribute( 'src' ).lastIndexOf( '-' ) );
+			return imageName + imageExtension;
 		}
 	}
 
