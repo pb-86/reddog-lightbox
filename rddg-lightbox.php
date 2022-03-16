@@ -3,7 +3,7 @@
  * Plugin Name: RDDG Lightbox
  * Plugin URI: https://github.com/pb-86/rddg-Lightbox
  * Description: Simple and lightweight plugin that provide lightbox gallery.
- * Version: 0.3.2
+ * Version: 0.3.3
  * Author: Reddog Systems
  * Author URI: https://reddog.systems
  * License: GPLv2 or later
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PLUGIN_VERSION', '0.3.2' );
+define( 'PLUGIN_VERSION', '0.3.3' );
 define( 'PLUGIN_PATH', plugins_url() . '/rddg-Lightbox/' );
 define( 'IMAGES_PATH', PLUGIN_PATH . 'assets/images/' );
 define( 'SCRIPTS_PATH', PLUGIN_PATH . 'assets/scripts/' );
