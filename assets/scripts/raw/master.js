@@ -98,6 +98,9 @@ if ( images.length !== 0 ) {
 			if ( e.key === 'ArrowRight' ) {
 				showNextImage();
 			}
+			if ( e.key === 'Escape' ) {
+				closeModal();
+			}
 		}
 	}
 
