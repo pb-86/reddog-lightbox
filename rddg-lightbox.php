@@ -3,7 +3,7 @@
  * Plugin Name: RDDG Lightbox
  * Plugin URI: https://github.com/pb-86/rddg-Lightbox
  * Description: Simple and lightweight plugin that provide lightbox gallery.
- * Version: 0.3.3
+ * Version: 0.4
  * Author: Reddog Systems
  * Author URI: https://reddog.systems
  * License: GPLv2 or later
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PLUGIN_VERSION', '0.3.3' );
+define( 'PLUGIN_VERSION', '0.4' );
 define( 'PLUGIN_PATH', plugins_url() . '/rddg-Lightbox/' );
 define( 'IMAGES_PATH', PLUGIN_PATH . 'assets/images/' );
 define( 'SCRIPTS_PATH', PLUGIN_PATH . 'assets/scripts/' );
@@ -45,7 +45,7 @@ define( 'STYLES_PATH', PLUGIN_PATH . 'assets/styles/css/' );
  */
 function rddglb_add_scripts() {
 	if ( is_singular() ) {
-		wp_register_script( 'rddglb-master', SCRIPTS_PATH . 'master.js', array(), PLUGIN_VERSION, true );
+		wp_register_script( 'rddglb-master', SCRIPTS_PATH . 'master.min.js', array(), PLUGIN_VERSION, true );
 		wp_enqueue_script( 'rddglb-master' );
 	}
 }
@@ -56,7 +56,7 @@ add_action( 'wp_enqueue_scripts', 'rddglb_add_scripts' );
  */
 function rddglb_add_styles() {
 	if ( is_singular() ) {
-		wp_register_style( 'rddglb-master', STYLES_PATH . 'master.css', array(), PLUGIN_VERSION, 'all' );
+		wp_register_style( 'rddglb-master', STYLES_PATH . 'master.min.css', array(), PLUGIN_VERSION, 'all' );
 		wp_enqueue_style( 'rddglb-master' );
 	}
 }

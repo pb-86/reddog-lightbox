@@ -1,0 +1,105 @@
+.rddglb-modal {
+	display: none;
+
+	&--show {
+		align-items: center;
+		background-color: rgba(0,0,0,0.9);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: 99998;
+	}
+
+	&__buttons {
+		position: absolute;
+		width: 100%;
+		top: calc(50% - 1.5rem);
+		z-index: 99999;
+
+		&--hide {
+			display: none;
+		}
+	}
+
+	&__button {
+		background: none;
+		border: 0;
+		height: 3rem;
+		line-height: 0;
+		position: absolute;
+		width: 3rem;
+
+		&--close {
+			top: 1rem;
+			right: 1rem;
+		}
+
+		&--prev {
+			left: 1rem;
+		}
+
+		&--next {
+			right: 1rem;
+		}
+
+		&:hover {
+			background-color: #333;
+		}
+	}
+
+	&__loading {
+		&--hide {
+			display: none;
+		}
+	}
+
+	&__full-image {
+		border: 0.5rem solid #fff;
+		max-height: 85vh;
+		max-width: 85vw;
+
+		&--hide {
+			display: none;
+		}
+	}
+
+	.rddglb-modal__counter {
+		background-color: #333;
+		bottom: 1rem;
+		color: #fff;
+		font-size: 1rem;
+		font-family: sans-serif;
+		font-weight: 700;
+		line-height: 1;
+		padding: 1rem 1.5rem;
+		position: absolute;
+
+		&--hide {
+			display: none;
+		}
+	}
+
+	&__counter-separator {
+		color: #666;
+		padding: 0 0.25rem;
+	}
+}
+
+.admin-bar {
+	.rddglb-modal__button--close {
+		top: calc(1rem + 32px);
+	}
+}
+
+.rddglb-overflow {
+	overflow: hidden;
+}
+
+img[class^='wp-image-'] {
+	cursor: pointer;
+}
