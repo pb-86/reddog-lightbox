@@ -46,7 +46,10 @@ if ( images.length !== 0 ) {
 		if ( image.hasAttribute( 'data-full-url' ) ) {
 			return image.getAttribute( 'data-full-url' );
 		} else if ( image.hasAttribute( 'srcset' ) ) {
-			return image.getAttribute( 'srcset' ).split(',').pop().trim().split(' ')[0];
+			const imageUrl       = image.getAttribute( 'srcset' ).split(',').pop().trim().split(' ')[0];
+			const imageExtension = imageUrl.substring( imageUrl.lastIndexOf( '.' ) );
+			const imageName      = imageUrl.substring( 0, imageUrl.lastIndexOf( '-' ) );
+			return imageName + imageExtension;
 		} else {
 			const imageExtension = image.getAttribute( 'src' ).substring( image.getAttribute( 'src' ).lastIndexOf( '.' ) );
 			const imageName      = image.getAttribute( 'src' ).substring( 0, image.getAttribute( 'src' ).lastIndexOf( '-' ) );
