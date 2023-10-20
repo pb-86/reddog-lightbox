@@ -1,1 +1,1 @@
-# RDDG Lightbox
+# Reddog Lightbox
